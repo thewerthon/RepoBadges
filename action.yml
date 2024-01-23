@@ -1,0 +1,131 @@
+name: 'Repository Badges'
+description: 'Generate badges for a repository.'
+inputs:
+  version_badge:
+    description: 'The output path to save the version badge svg - including extension!'
+    required: false
+    default: './output/version.svg'
+  updated_badge:
+    description: 'The output path to save the updated badge svg - including extension!'
+    required: false
+    default: './output/updated.svg'
+  files_badge:
+    description: 'The output path to save the files badge svg - including extension!'
+    required: false
+    default: './output/files.svg'
+  lines_badge:
+    description: 'The output path to save the lines badge svg - including extension!'
+    required: false
+    default: './output/lines.svg'
+  version_badge_label:
+    description: "The label to use for the version badge."
+    required: false
+    default: "Current Version"
+  updated_badge_label:
+    description: "The label to use for the updated badge."
+    required: false
+    default: "Last Updated"
+  files_badge_label:
+    description: "The label to use for the files badge."
+    required: false
+    default: "Total of Files"
+  lines_badge_label:
+    description: "The label to use for the lines badge."
+    required: false
+    default: "Lines of Code"
+  version_badge_labelcolor:
+    description: "The color to use for the version badge label."
+    required: false
+    default: "555"
+  updated_badge_labelcolor:
+    description: "The color to use for the updated badge label."
+    required: false
+    default: "555"
+  files_badge_labelcolor:
+    description: "The color to use for the files badge label."
+    required: false
+    default: "555"
+  lines_badge_labelcolor:
+    description: "The color to use for the lines badge label."
+    required: false
+    default: "555"
+  version_badge_color:
+    description: "The color to use for the version badge."
+    required: false
+    default: "green"
+  updated_badge_color:
+    description: "The color to use for the updated badge."
+    required: false
+    default: "blue"
+  files_badge_color:
+    description: "The color to use for the files badge."
+    required: false
+    default: "blue"
+  lines_badge_color:
+    description: "The color to use for the lines badge."
+    required: false
+    default: "blue"
+  version_badge_style:
+    description: "The body style to use for the version badge. ('flat' or 'classic')"
+    required: false
+    default: "classic"
+  updated_badge_style:
+    description: "The body style to use for the updated badge. ('flat' or 'classic')"
+    required: false
+    default: "classic"
+  files_badge_style:
+    description: "The body style to use for the files badge. ('flat' or 'classic')"
+    required: false
+    default: "classic"
+  lines_badge_style:
+    description: "The body style to use for the lines badge. ('flat' or 'classic')"
+    required: false
+    default: "classic"
+  version_badge_scale:
+    description: "The scale to resize the version badge"
+    required: false
+    default: "1"
+  updated_badge_scale:
+    description: "The scale to resize the updated badge"
+    required: false
+    default: "1"
+  files_badge_scale:
+    description: "The scale to resize the files badge"
+    required: false
+    default: "1"
+  lines_badge_scale:
+    description: "The scale to resize the lines badge"
+    required: false
+    default: "1"
+  version_prefix:
+    description: "The prefix to query the version by"
+    required: false
+    default: ""
+  version_fallback:
+    description: "Fallback version to use when no previous version can be found"
+    required: false
+    default: "none"
+  directory:
+    description: 'The directory to scan for the files and lines count.'
+    required: false
+    default: './'
+  patterns:
+    description: 'The file patterns to search for, separated by pipes ("|").'
+    required: false
+    default: "**"
+  ignore:
+    description: 'The file patterns to ignore, even if they matched "patterns", separated by pipes ("|").'
+    required: false
+    default: "node_modules"
+  debug:
+    description: 'Enable debug logging'
+    required: false
+    default: 'false'
+
+runs:
+  using: 'node16'
+  main: './src/index.js'
+
+branding:
+  icon: 'award'  
+  color: 'green'

@@ -28,11 +28,11 @@ inputs:
   files_badge_label:
     description: "The label to use for the files badge."
     required: false
-    default: "Total of Files"
+    default: "Main Files"
   lines_badge_label:
     description: "The label to use for the lines badge."
     required: false
-    default: "Lines of Code"
+    default: "Code Lines"
   version_badge_labelcolor:
     description: "The color to use for the version badge label."
     required: false

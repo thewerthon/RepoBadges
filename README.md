@@ -23,7 +23,7 @@ on:
       - main
   release:
     types:
-      - created
+      - published
 
 jobs:
   create_badges:
@@ -34,7 +34,7 @@ jobs:
         uses: actions/checkout@v1
         
       - name: Generate Badges
-        uses: thewerthon/RepoBadges@v1.0.0
+        uses: thewerthon/RepoBadges@v1.0.1
         id: badges
         with:
           directory: ./
@@ -48,8 +48,8 @@ jobs:
           lines_badge: ./output/lines.svg
           version_badge_label: "Current Version"
           updated_badge_label: "Last Updated"
-          files_badge_label: "Total of Files"
-          lines_badge_label: "Lines of Code"
+          files_badge_label: "Main Files"
+          lines_badge_label: "Code Lines"
           version_badge_style: "classic"
           updated_badge_style: "classic"
           files_badge_style: "classic"

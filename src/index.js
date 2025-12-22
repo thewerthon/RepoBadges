@@ -27,7 +27,7 @@ async function executeCommand(command) {
 		const timestampResult = await executeCommand(`git log -1 --format=%at ${tag}`);
 		const timestamp = timestampResult.trim();
 
-		tagvers = tag;
+		if (tag) tagvers = tag;
 		updvers = timestamp;
 
 		console.log('\x1b[32m%s\x1b[0m', `Found tag: ${tag}`);
@@ -52,28 +52,28 @@ if (debug) core.info('Debugging enabled.');
 const versionBadgeOpts = {};
 for (const en of Object.keys(process.env)) {
 	if (en.startsWith('INPUT_VERSION_BADGE_')) {
-		versionBadgeOpts[en.replace('INPUT_VERSION_BADGE_', '').toLowerCase()] = process.env[en]
+		versionBadgeOpts[en.replace('INPUT_VERSION_BADGE_', '').toLowerCase()] = process.env[en];
 	}
 }
 
 const updatedBadgeOpts = {};
 for (const en of Object.keys(process.env)) {
 	if (en.startsWith('INPUT_UPDATED_BADGE_')) {
-		updatedBadgeOpts[en.replace('INPUT_UPDATED_BADGE_', '').toLowerCase()] = process.env[en]
+		updatedBadgeOpts[en.replace('INPUT_UPDATED_BADGE_', '').toLowerCase()] = process.env[en];
 	}
 }
 
 const filesBadgeOpts = {};
 for (const en of Object.keys(process.env)) {
 	if (en.startsWith('INPUT_FILES_BADGE_')) {
-		filesBadgeOpts[en.replace('INPUT_FILES_BADGE_', '').toLowerCase()] = process.env[en]
+		filesBadgeOpts[en.replace('INPUT_FILES_BADGE_', '').toLowerCase()] = process.env[en];
 	}
 }
 
 const linesBadgeOpts = {};
 for (const en of Object.keys(process.env)) {
 	if (en.startsWith('INPUT_LINES_BADGE_')) {
-		linesBadgeOpts[en.replace('INPUT_LINES_BADGE_', '').toLowerCase()] = process.env[en]
+		linesBadgeOpts[en.replace('INPUT_LINES_BADGE_', '').toLowerCase()] = process.env[en];
 	}
 }
 
@@ -83,15 +83,15 @@ async function countLines(fullPath) {
 		require('fs').createReadStream(fullPath)
 			.on('data', function (chunk) {
 				let index = -1;
-				while ((index = chunk.indexOf(10, index + 1)) > -1) count++
+				while ((index = chunk.indexOf(10, index + 1)) > -1) count++;
 			})
 			.on('end', function () {
 				res(count);
 			})
 			.on('error', function (err) {
-				rej(err)
+				rej(err);
 			});
-	})
+	});
 }
 
 const countThrottled = throttle(countLines, 10);
@@ -119,7 +119,7 @@ async function getFiles(dir, patterns = [], negative = []) {
 				core.error(err);
 				return 0;
 			}
-		}))
+		}));
 	}).then(res => res.map(r => lines += r));
 
 	return { lines, ignored, counted };
@@ -141,7 +141,7 @@ function throttle(callback, limit = 5) {
 		} finally {
 			cb();
 		}
-	}
+	};
 }
 
 function makeVersionBadge(text, config) {
@@ -228,24 +228,24 @@ function numberFormatter(num) {
 }
 
 getFiles(dir, patterns, ignore).then(async ret => {
-	core.info(`Counted ${ret.lines} Lines from ${ret.counted} Files, ignoring ${ret.ignored} Files.`)
+	core.info(`Counted ${ret.lines} Lines from ${ret.counted} Files, ignoring ${ret.ignored} Files.`);
 	core.info(`Took: ${Date.now() - st}`);
 
-	let datetime = new Date(parseInt(updvers) * 1000)
+	let datetime = new Date(parseInt(updvers) * 1000);
 	let day = datetime.getDate();
 	let month = datetime.toLocaleString('en', { month: 'short' });
 	let year = datetime.getFullYear();
 	let fulldate = `${month} ${day} ${year}`;
 
-	await fs.mkdir(path.dirname(version_badge), { recursive: true })
+	await fs.mkdir(path.dirname(version_badge), { recursive: true });
 	await fs.writeFile(version_badge, makeFilesBadge(tagvers, versionBadgeOpts));
 
-	await fs.mkdir(path.dirname(updated_badge), { recursive: true })
+	await fs.mkdir(path.dirname(updated_badge), { recursive: true });
 	await fs.writeFile(updated_badge, makeFilesBadge(fulldate, updatedBadgeOpts));
 
-	await fs.mkdir(path.dirname(files_badge), { recursive: true })
+	await fs.mkdir(path.dirname(files_badge), { recursive: true });
 	await fs.writeFile(files_badge, makeFilesBadge(numberFormatter(ret.counted), filesBadgeOpts));
 
-	await fs.mkdir(path.dirname(lines_badge), { recursive: true })
+	await fs.mkdir(path.dirname(lines_badge), { recursive: true });
 	await fs.writeFile(lines_badge, makeLinesBadge(numberFormatter(ret.lines), linesBadgeOpts));
-})
+});

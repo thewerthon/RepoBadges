@@ -31,10 +31,13 @@ jobs:
     name: Create Badges
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v1
-        
+        uses: actions/checkout@v4
+
+	  - name: Fetch Tags
+        run: git fetch --tags --force
+
       - name: Generate Badges
-        uses: thewerthon/RepoBadges@v1.0.1
+        uses: thewerthon/RepoBadges@v1.0.2
         id: badges
         with:
           directory: ./

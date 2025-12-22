@@ -1,11 +1,11 @@
 {
-  "name": "repobadges",
-  "version": "1.0.0",
-  "license": "MIT",
-  "repository": "https://github.com/thewerthon/RepoBadges",
-  "dependencies": {
-    "@actions/core": "^1.2.3",
-    "glob-gitignore": "^1.0.14",
-    "badgen": "^3.0.1"
-  }
+	"name": "repobadges",
+	"version": "1.0.2",
+	"license": "MIT",
+	"repository": "https://github.com/thewerthon/RepoBadges",
+	"dependencies": {
+		"@actions/core": "^1.2.3",
+		"glob-gitignore": "^1.0.14",
+		"badgen": "^3.0.1"
+	}
 }

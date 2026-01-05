@@ -108,7 +108,8 @@ async function getFiles(dir, patterns = [], negative = []) {
 	await glob(patterns, {
 		cwd: dir,
 		ignore: negative,
-		nodir: true
+		nodir: true,
+		dot: true
 	}).then(files => {
 		counted = files.length;
 		return Promise.all(files.map(async f => {

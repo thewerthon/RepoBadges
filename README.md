@@ -37,7 +37,7 @@ jobs:
         run: git fetch --tags --force
 
       - name: Generate Badges
-        uses: thewerthon/RepoBadges@v1.0.2
+        uses: thewerthon/RepoBadges@v1.0.3
         id: badges
         with:
           directory: ./

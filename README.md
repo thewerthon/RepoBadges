@@ -1,4 +1,5 @@
 # Repository Badges
+
 [![Current Version](https://raw.githubusercontent.com/thewerthon/RepoBadges/badges/version.svg)](../../releases)
 [![Last Updated](https://raw.githubusercontent.com/thewerthon/RepoBadges/badges/updated.svg)](../../releases)
 [![Total of Files](https://raw.githubusercontent.com/thewerthon/RepoBadges/badges/files.svg)](./README.md)
@@ -12,6 +13,7 @@ Generate badges for:
 - Lines of Code in Repository
 
 ## How to Use:
+
 Setup this action on your repository:
 
 ```yml
